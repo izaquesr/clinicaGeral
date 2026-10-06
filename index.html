@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Clínica Vida Plena</title>
+    <meta name="description" content="Cuidado com atenção e cuidado de verdade. Agende sua consulta pelo WhatsApp.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Figtree:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- ============ TOPO / LOGO ============ -->
+    <header class="hero" id="inicio">
+        <div class="wrap">
+            <nav class="nav" aria-label="Principal">
+                <a class="logo" href="#inicio">
+                    <!-- Para usar a logo real: coloque <img src="logo.png" alt="Logo"> dentro de .logo-mark -->
+                    <span class="logo-mark" data-bind="logoMark">✚</span>
+                    <span data-bind="name">Clínica</span>
+                </a>
+                <ul>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#espaco">Espaço</a></li>
+                    <li><a href="#local">Onde estamos</a></li>
+                    <li><a href="#agendar">Agendar</a></li>
+                </ul>
+            </nav>
+            <div class="hero-grid">
+                <div>
+                    <h1 data-bind="headline">Cuidado que começa no acolhimento</h1>
+                    <p class="lead" data-bind="subheadline">Atendimento humano, com tempo para ouvir você e a sua
+                        família.</p>
+                    <div class="hero-actions">
+                        <a class="btn" href="#agendar">Agendar consulta</a>
+                        <a class="btn ghost" href="#sobre">Conhecer a clínica</a>
+                    </div>
+                </div>
+                <!-- Foto principal: defina CLINIC.heroPhoto abaixo -->
+                <div class="hero-photo" id="heroPhoto"><span>Foto principal da clínica</span></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============ SOBRE ============ -->
+    <section id="sobre">
+        <div class="wrap about-grid">
+            <div>
+                <h2>Sobre a clínica</h2>
+                <p class="lead" data-bind="about">Somos uma clínica focada em oferecer atendimento de qualidade em um
+                    ambiente tranquilo. Cada paciente recebe atenção individual, do primeiro contato ao acompanhamento.
+                </p>
+                <ul class="pills" id="services"></ul>
+            </div>
+            <div class="team" id="team"></div>
+        </div>
+    </section>
+
+    <!-- ============ ESPAÇO / FOTOS ============ -->
+    <section class="gallery-sec" id="espaco">
+        <div class="wrap">
+            <h2>Conheça o nosso espaço</h2>
+            <p class="lead">Um ambiente pensado para você se sentir bem desde a chegada.</p>
+            <div class="gallery" id="gallery"></div>
+        </div>
+    </section>
+
+    <!-- ============ LOCALIZAÇÃO ============ -->
+    <section id="local">
+        <div class="wrap">
+            <h2>Onde estamos e quando atendemos</h2>
+            <div class="info-grid">
+                <div class="card">
+                    <h3>Endereço</h3>
+                    <p class="addr" data-bind="address"></p>
+                    <iframe class="map" id="map" title="Mapa da clínica" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <a class="btn ghost" id="routeBtn" style="margin-top:1rem" target="_blank" rel="noopener">Abrir no
+                        mapa</a>
+                </div>
+                <div class="card">
+                    <h3>Horário de atendimento</h3>
+                    <table class="hours" id="hours"></table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ AGENDAMENTO ============ -->
+    <section class="form-sec" id="agendar">
+        <div class="wrap">
+            <div style="text-align:center">
+                <h2>Agende sua consulta</h2>
+                <p class="lead" style="margin:0 auto">Preencha os dados e envie pelo WhatsApp. A clínica confirma se o
+                    dia e o horário estão disponíveis.</p>
+            </div>
+
+            <form id="form" novalidate>
+                <label class="switch">
+                    <input type="checkbox" id="isMinor">
+                    <span>A consulta é para uma criança ou menor de idade<small>Vamos pedir também o nome do
+                            responsável.</small></span>
+                </label>
+
+                <div class="minor" id="minorBox">
+                    <div class="row">
+                        <div class="field"><label for="patient">Nome do paciente (criança)</label><input id="patient"
+                                autocomplete="off"><span class="err">Informe o nome do paciente.</span></div>
+                        <div class="field"><label for="guardian">Nome do responsável (pai ou mãe)</label><input
+                                id="guardian" autocomplete="name"><span class="err">Informe o nome do
+                                responsável.</span></div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="field full" id="nameField"><label for="name" id="nameLabel">Seu nome</label><input
+                            id="name" autocomplete="name"><span class="err">Informe o nome.</span></div>
+                    <div class="field"><label for="phone">WhatsApp</label><input id="phone" type="tel" inputmode="tel"
+                            placeholder="(00) 00000-0000" autocomplete="tel"><span class="err">Informe um número com
+                            DDD.</span></div>
+                    <div class="field"><label for="address">Endereço</label><input id="address"
+                            autocomplete="street-address"><span class="err">Informe o endereço.</span></div>
+                    <div class="field full"><label for="service">Tipo de serviço
+                            <small>(opcional)</small></label><select id="service">
+                            <option value="">Selecione</option>
+                        </select></div>
+                    <div class="field"><label for="date">Dia sugerido</label><input id="date" type="date"><span
+                            class="err">Escolha um dia.</span></div>
+                    <div class="field"><label for="time">Horário sugerido</label><input id="time" type="time"><span
+                            class="err">Escolha um horário.</span></div>
+                    <div class="field full"><label for="msg">Mensagem <small>(opcional)</small></label><textarea
+                            id="msg"></textarea></div>
+                </div>
+                <p class="note">Dia e horário são apenas uma sugestão. Você receberá a confirmação pelo WhatsApp.</p>
+                <button class="btn" type="submit">Enviar pelo WhatsApp</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="wrap">© <span id="year"></span> <span data-bind="name"></span>. Todos os direitos reservados.</div>
+    </footer>
+
+    <!-- Botões flutuantes -->
+    <div class="float">
+        <a id="fbIg" target="_blank" rel="noopener" aria-label="Instagram da clínica"><svg viewBox="0 0 24 24">
+                <path
+                    d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9Zm0 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5Zm5.2-3.2a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2Z" />
+            </svg></a>
+        <a id="fbWa" target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg viewBox="0 0 24 24">
+                <path
+                    d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 2a8 8 0 1 1-4.1 14.9l-.3-.2-2.2.6.6-2.1-.2-.3A8 8 0 0 1 12 4Zm-3 3.6c-.3 0-.6.1-.8.4-.3.3-1 1-1 2.400s1 2.800 1.200 3c.2.2 2 3.100 4.900 4.300 2.400 1 2.900.8 3.400.7.5-.1 1.700-.7 1.900-1.400.2-.7.2-1.300.1-1.400-.1-.1-.3-.2-.6-.4l-1.800-.9c-.3-.1-.5-.1-.7.1l-.8 1c-.2.2-.3.2-.6.1-.3-.2-1.200-.5-2.300-1.400-.9-.8-1.400-1.700-1.600-2-.2-.3 0-.4.1-.6l.4-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2c-.2-.5-.4-.5-.6-.5Z" />
+            </svg></a>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
